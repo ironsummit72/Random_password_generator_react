@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  color: white;
+}
+.heading {
+  text-align: center;
+  position: relative;
+  top: 50px;
+}
+.container {
+  margin-top: 7%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+.container > input {
+  width: 59%;
+  height: 18px;
+  border-radius: 22px;
+  padding: 10px;
+  border: 2px solid yellowgreen;
+  font-weight: bold;
+}
+.copy {
+  background-color: yellowgreen;
+  width: 5%;
+  height: 35px;
+  border-radius: 22px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  cursor: pointer;
+  margin-left: 20px;
+  border: none;
+}
+
+.container2 {
+  height: 70px;
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  left: 24%;
+  top: 40px;
+}
+.container2 > label {
+  right: 10px;
+}

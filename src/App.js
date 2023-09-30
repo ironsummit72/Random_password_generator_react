@@ -1,5 +1,5 @@
 
-import { useState,useCallback, useEffect } from "react";
+import { useState,useCallback, useEffect, useRef } from "react";
 import "./App.css";
 
 function App() {
@@ -8,10 +8,11 @@ const [isNumber,setIsNumber]=useState(false);
 const [isCharacter,setIsCharacter]=useState(false);
 const [password,setPassword]=useState('')
 const [copyText,setCopyText]=useState("Copy")
+const passwordRef=useRef(null);
 const copy=()=>{
-let password=document.getElementById('password');
-password.select()
-navigator.clipboard.writeText(password.value);
+
+passwordRef.current?.select()
+navigator.clipboard.writeText(password);
 setCopyText('Copied!')
 }
 const passwordGenerator=useCallback(()=>{
@@ -32,7 +33,7 @@ useEffect(()=>{passwordGenerator()},[length,isNumber,isCharacter,passwordGenerat
   return <>
   <h1 className="heading">Password Generator</h1>
   <div className="container">
-<input type="text" value={password} id="password" className="" placeholder="password" readOnly/>
+<input type="text" value={password} id="password" className="" placeholder="password" ref={passwordRef} readOnly/>
 <button className="copy" onClick={copy}>{copyText}</button>
   </div>
   <div className="container2"><input id="passwordLength" type="range" min={6} max={100} value={length} onChange={(e)=>{

@@ -10,13 +10,15 @@ const [password,setPassword]=useState('')
 const [copyText,setCopyText]=useState("Copy")
 const [copybtnBackground,setCopyBtnBackground]=useState('orange')
 const passwordRef=useRef(null);
-const copyToClipboard=()=>{
+const copyToClipboard=useCallback(()=>{
+  passwordRef.current?.select();
+  navigator.clipboard.writeText(password);
+  setCopyText("Copied!");
+  setCopyBtnBackground("#01f00d");
+},[password])
 
-passwordRef.current?.select()
-navigator.clipboard.writeText(password);
-setCopyText('Copied!')
-setCopyBtnBackground('#01f00d')
-}
+
+
 const passwordGenerator=useCallback(()=>{
   let pass=''
   let str='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'

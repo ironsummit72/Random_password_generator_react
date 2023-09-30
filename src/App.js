@@ -9,7 +9,7 @@ const [isCharacter,setIsCharacter]=useState(false);
 const [password,setPassword]=useState('')
 const [copyText,setCopyText]=useState("Copy")
 const passwordRef=useRef(null);
-const copy=()=>{
+const copyToClipboard=()=>{
 
 passwordRef.current?.select()
 navigator.clipboard.writeText(password);
@@ -34,7 +34,7 @@ useEffect(()=>{passwordGenerator()},[length,isNumber,isCharacter,passwordGenerat
   <h1 className="heading">Password Generator</h1>
   <div className="container">
 <input type="text" value={password} id="password" className="" placeholder="password" ref={passwordRef} readOnly/>
-<button className="copy" onClick={copy}>{copyText}</button>
+<button className="copy" onClick={copyToClipboard}>{copyText}</button>
   </div>
   <div className="container2"><input id="passwordLength" type="range" min={6} max={100} value={length} onChange={(e)=>{
     setCopyText('Copy')
